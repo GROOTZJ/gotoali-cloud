@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: gotoali-gateway
+  cloud:
+    gateway:
+      default-filters:
+      routes:
+        - id: redis
+          # lb代表从注册中心获取服务
+          uri: lb://gotoali-redis
+          predicates:
+            # 转发该路径
+            - Path=/redis/**
+
+          # 带前缀
+          filters:
+            - StripPrefix=1
+
+        - id: controller
+          # lb代表从注册中心获取服务
+          uri: lb://gotoali-controller
+          predicates:
+            # 转发该路径
+            - Path=/controller/**
+
+          # 带前缀
+          filters:
+            - StripPrefix=1
+
+
+
+#服务注册中心端口号
+server:
+  port: 9010
+
+#服务注册中心实例的主机名、端口
+#是否向服务注册中心注册自己
+#是否检索服务
+#服务注册中心的配置内容，指定服务注册中心的位置
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
