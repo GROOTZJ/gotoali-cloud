@@ -13,3 +13,6 @@ spring:
 
 swagger:
   enabled: true
+ribbon:
+  ReadTimeout: 3000
+  ConnectTimeout: 3000

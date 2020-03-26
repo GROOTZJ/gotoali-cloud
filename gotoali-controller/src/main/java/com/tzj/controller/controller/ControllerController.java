@@ -6,6 +6,9 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Random;
+import java.util.stream.LongStream;
+
 /**
  * @author TianZiJiang
  * @date 2019-08-27
@@ -16,6 +19,8 @@ public class ControllerController {
 
     @Autowired
     private RedisFeignService redisFeignService;
+
+
 
     @GetMapping("test")
     @ApiOperation(value="controller测试")
@@ -34,4 +39,9 @@ public class ControllerController {
 
 //    TODO fegin调用  service层 dao层  整合mysql
 
+    @GetMapping("user")
+    @ApiOperation(value = "数据库测试")
+    public ResultVo findUserById(@RequestParam("userId") Integer userId) {
+        return redisFeignService.findUserById(userId);
+    }
 }

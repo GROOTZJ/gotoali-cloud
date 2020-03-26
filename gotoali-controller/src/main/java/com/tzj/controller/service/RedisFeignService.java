@@ -4,4 +4,6 @@ import com.tzj.controller.vo.ResultVo;
 
 public interface RedisFeignService {
     ResultVo setRedis(String name, String value);
+
+    ResultVo findUserById(Integer usetId);
 }
