@@ -7,6 +7,7 @@
     <groupId>demo.springclould</groupId>
     <artifactId>gotoali</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <modules>
         <module>gotoali-gateway</module>

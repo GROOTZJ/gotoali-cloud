@@ -26,7 +26,7 @@ spring:
           # 带前缀
           filters:
             - StripPrefix=1
-            -
+
         - id: service
           # lb代表从注册中心获取服务
           uri: lb://gotoali-service
